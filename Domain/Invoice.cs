@@ -12,9 +12,7 @@ namespace Domain
         [Key]
         public int invoiceID { get; set; }
         [Required]
-        public InvoiceDetail invoicedetailID { get; set; }
-        [Required]
-        public Client clientID { get; set; }
+        public Client Client { get; set; }
         [Required]
         public string invoicecode { get; set; }
         [Required]

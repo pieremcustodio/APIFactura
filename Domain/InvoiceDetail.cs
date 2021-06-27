@@ -12,12 +12,12 @@ namespace Domain
         [Key]
         public int invoicedetailID { get; set; }
         [Required]
+        public Invoice Invoice { get; set; }
+        [Required]
+        public Product Product { get; set; }
+        [Required]
         public int quantity { get; set; }
         [Required]
         public double price { get; set; }
-        [Required]
-        public double subtotal { get; set; }
-        [Required]
-        public Product productID { get; set; }
     }
 }

@@ -17,7 +17,6 @@ namespace Infraestructure
         public DbSet<Client> Client { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<InvoiceDetail> InvoiceDetail { get; set; }
-        
         public DbSet<Invoice> Invoice { get; set; }
     }
 }
