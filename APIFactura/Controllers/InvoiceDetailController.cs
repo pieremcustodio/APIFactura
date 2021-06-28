@@ -30,13 +30,19 @@ namespace APIFactura.Controllers
         }
 
         [HttpGet]
-        public JsonResult<InvoiceDetailModel> GetDetailByProduct(string productname)
+        [Route("find/{productname}")]
+        public JsonResult<List<Models.InvoiceDetailModel>> GetDetailByProduct(string productname)
         {
             EntityMapper<InvoiceDetail, InvoiceDetailModel> mapObj = new EntityMapper<InvoiceDetail, InvoiceDetailModel>();
-            InvoiceDetail invDetail = Service.GetByProductName(productname);
-            InvoiceDetailModel InvoiceDetails = new InvoiceDetailModel();
-            InvoiceDetails = mapObj.Translate(invDetail);
-            return Json<InvoiceDetailModel>(InvoiceDetails);
+            List<InvoiceDetail> invDetail = Service.GetByProductName(productname);
+            List<InvoiceDetailModel> Details = new List<InvoiceDetailModel>();
+            foreach (var detail in invDetail)
+            {
+                Details.Add(mapObj.Translate(detail));
+
+            }
+
+            return Json<List<InvoiceDetailModel>>(Details);
         }
 
         [HttpGet]
