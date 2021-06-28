@@ -20,6 +20,34 @@ namespace Service
             return invoices;
         }
 
+        public List<Invoice> GetSearch(string client, string invoicecode, DateTime date_first,
+            DateTime date_last)
+        {
+            List<Invoice> invoices = null;
+            using(var context = new InvoiceContext())
+            {
+                if(client == null)
+                {
+                    invoices = context.Invoice.Where(x => x.invoicecode == invoicecode)
+                        .Where(x=> date_first<= x.date && date_last>=x.date).ToList();
+                    return invoices;
+                }
+                else if(invoicecode == null)
+                {
+                    invoices = context.Invoice.Where(x => x.Client.name == client)
+                        .Where(x => date_first <= x.date && date_last >= x.date).ToList();
+                    return invoices;
+
+                }
+                else
+                {
+                    invoices = context.Invoice
+                        .Where(x => date_first <= x.date && date_last >= x.date).ToList();
+                    return invoices;
+                }
+            }
+        }
+
         public Invoice GetById(int ID)
         {
             Invoice invoice = null;

@@ -30,12 +30,6 @@ namespace APIFactura.Controllers
             return Json<List<ProductModel>>(Products);
         }
 
-        [HttpGet]
-        public JsonResult<ProductModel> GetProduct(int id)
-        {
-            EntityMapper<Product, ProductModel> mapObj = new EntityMapper<Product, ProductModel>();
-            Product oneProduct = Service.GetById(id);
-            
-        }
+        
     }
 }
