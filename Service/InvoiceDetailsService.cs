@@ -30,6 +30,15 @@ namespace Service
             return invoicedetail;
         }
 
+        public InvoiceDetail GetByProductName(string productname)
+        {
+            InvoiceDetail invoicedetail = null;
+            using (var context = new InvoiceContext())
+            {
+                invoicedetail = (InvoiceDetail)context.InvoiceDetail.Where(e => e.Product.name == productname);
+            }
+            return invoicedetail;
+        }
         public void Insert(InvoiceDetail invoicedetail)
         {
             using (var context = new InvoiceContext())

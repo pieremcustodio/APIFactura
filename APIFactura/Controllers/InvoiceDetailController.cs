@@ -30,6 +30,16 @@ namespace APIFactura.Controllers
         }
 
         [HttpGet]
+        public JsonResult<InvoiceDetailModel> GetDetailByProduct(string productname)
+        {
+            EntityMapper<InvoiceDetail, InvoiceDetailModel> mapObj = new EntityMapper<InvoiceDetail, InvoiceDetailModel>();
+            InvoiceDetail invDetail = Service.GetByProductName(productname);
+            InvoiceDetailModel InvoiceDetails = new InvoiceDetailModel();
+            InvoiceDetails = mapObj.Translate(invDetail);
+            return Json<InvoiceDetailModel>(InvoiceDetails);
+        }
+
+        [HttpGet]
         public JsonResult<InvoiceDetailModel> GetDetail(int id)
         {
             EntityMapper<InvoiceDetail, InvoiceDetailModel> mapObj = new EntityMapper<InvoiceDetail, InvoiceDetailModel>();
