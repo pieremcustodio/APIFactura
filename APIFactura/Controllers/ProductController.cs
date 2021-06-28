@@ -35,7 +35,9 @@ namespace APIFactura.Controllers
         {
             EntityMapper<Product, ProductModel> mapObj = new EntityMapper<Product, ProductModel>();
             Product oneProduct = Service.GetById(id);
-            
+            ProductModel Products = new ProductModel();
+            Products = mapObj.Translate(oneProduct);
+            return Json<ProductModel>(Products),
         }
     }
 }
