@@ -30,12 +30,12 @@ namespace Service
             return invoicedetail;
         }
 
-        public InvoiceDetail GetByProductName(string productname)
+        public List<InvoiceDetail> GetByProductName(string productname)
         {
-            InvoiceDetail invoicedetail = null;
+            List<InvoiceDetail> invoicedetail = null;
             using (var context = new InvoiceContext())
             {
-                invoicedetail = (InvoiceDetail)context.InvoiceDetail.Where(e => e.Product.name == productname);
+                invoicedetail = context.InvoiceDetail.Include("Invoice").Include("Product").Where(e => e.Product.name == productname).ToList();
             }
             return invoicedetail;
         }

@@ -37,7 +37,7 @@ namespace APIFactura.Controllers
             Product oneProduct = Service.GetById(id);
             ProductModel Products = new ProductModel();
             Products = mapObj.Translate(oneProduct);
-            return Json<ProductModel>(Products),
+            return Json<ProductModel>(Products);
         }
     }
 }
