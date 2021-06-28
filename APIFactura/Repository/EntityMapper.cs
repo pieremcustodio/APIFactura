@@ -13,10 +13,22 @@ namespace APIFactura.Repository
         {
             Mapper.CreateMap<Models.InvoiceModel, Invoice>();
             Mapper.CreateMap<Invoice, Models.InvoiceModel>();
+            
             Mapper.CreateMap<Models.InvoiceDetailModel, InvoiceDetail>();
+            Mapper.CreateMap<InvoiceDetail, Models.InvoiceDetailModel>();
+            
             Mapper.CreateMap<Models.ProductModel, Product>();
+            Mapper.CreateMap<Product, Models.ProductModel>();
+            
             Mapper.CreateMap<Models.ClientModel, Client>();
+            Mapper.CreateMap<Client, Models.ClientModel>();
+
             Mapper.CreateMap<Models.InvoiceModel, Invoice>();
+            Mapper.CreateMap<Invoice, Models.InvoiceModel>();
+
+            Mapper.CreateMap<Models.SearchInvoiceModel, SearchInvoiceDomain>();
+            Mapper.CreateMap<SearchInvoiceDomain, Models.SearchInvoiceModel > ();
+
 
         }
 

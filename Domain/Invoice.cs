@@ -13,6 +13,7 @@ namespace Domain
         public int invoiceID { get; set; }
         [Required]
         public Client Client { get; set; }
+
         [Required]
         public string invoicecode { get; set; }
         [Required]

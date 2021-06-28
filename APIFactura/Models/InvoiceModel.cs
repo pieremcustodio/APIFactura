@@ -9,6 +9,7 @@ namespace APIFactura.Models
     {
         public int invoiceID { get; set; }
         public ClientModel Client { get; set; }
+
         public string invoicecode { get; set; }
         public DateTime date { get; set; }
         public double total { get; set; }

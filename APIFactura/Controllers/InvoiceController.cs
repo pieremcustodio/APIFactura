@@ -36,14 +36,17 @@ namespace APIFactura.Controllers
 
        
 
-        [HttpGet]
-        [Route("search/{client}/{invoicecode}/{date_first}/{date_last}")]
-        public JsonResult<List<Models.InvoiceModel>> SearchBy_invoiceCode(string client, string invoicecode, DateTime date_first,
-            DateTime date_last)
+        [HttpPost]
+        [Route("search")]
+        public JsonResult<List<Models.InvoiceModel>> SearchBy_invoiceCode(Models.SearchInvoiceModel searchInvoice)
         {
             EntityMapper<Invoice, InvoiceModel> mapObj = new EntityMapper<Invoice, InvoiceModel>();
+            EntityMapper<SearchInvoiceModel, SearchInvoiceDomain > mapObj2 = 
+                new EntityMapper<SearchInvoiceModel, SearchInvoiceDomain >();
+            SearchInvoiceDomain search = new SearchInvoiceDomain();
+            search = mapObj2.Translate(searchInvoice);
 
-            List<Invoice> invoiceList = InvoiceService.GetSearch(client, invoicecode, date_first, date_last);
+            List<Invoice> invoiceList = InvoiceService.GetSearch(search);
             List<InvoiceModel> Invoices = new List<InvoiceModel>();
             foreach(var invoice in invoiceList)
             {
